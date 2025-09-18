@@ -1,9 +1,13 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const path = require('path');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+app.use(cors({
+  origin: 'https://frontendgs.netlify.app' 
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
