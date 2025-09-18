@@ -5,13 +5,22 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+
+// CORS para permitir solicitudes desde Netlify
 app.use(cors({
   origin: 'https://frontendgs.netlify.app' 
 }));
+
+// Middleware para interpretar JSON
+app.use(express.json());
+
+// Middleware para formularios tradicionales
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/contact', (req, res) => {
+  console.log(req.body); // para debuggear
+
   const { name, email, message } = req.body;
 
   const transporter = nodemailer.createTransport({
