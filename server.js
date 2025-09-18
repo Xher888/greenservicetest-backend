@@ -37,7 +37,7 @@ app.post('/contact', (req, res) => {
   subject: `Nuovo messaggio da ${name}`,
   html: `
     <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
-      <h2 style="color: #2c3e50;">📩 Nuovo messaggio dal sito</h2>
+      <h2 style="color: #2c3e50;">📩 Nuovo messaggio dal sito Green Service</h2>
       <p><strong>Nome:</strong> ${name}</p>
       <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
       <p><strong>Telefono:</strong> ${phone}</p>
