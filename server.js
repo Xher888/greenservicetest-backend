@@ -6,9 +6,9 @@ require('dotenv').config();
 
 const app = express();
 
-// CORS para permitir solicitudes desde Netlify
+// CORS para permitir solicitudes desde Vercel
 app.use(cors({
-  origin: 'https://greenservicetest-frontend.vercel.app/' 
+  origin: 'https://greenservicetest-frontend.vercel.app' 
 }));
 
 // Middleware para interpretar JSON
