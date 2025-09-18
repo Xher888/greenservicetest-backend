@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.post('/contact', (req, res) => {
   console.log(req.body); // para debuggear
 
-  const { name, email, message } = req.body;
+  const { name, email, phone, message } = req.body;
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -32,11 +32,22 @@ app.post('/contact', (req, res) => {
   });
 
   const mailOptions = {
-    from: email,
-    to: process.env.EMAIL_USER,
-    subject: `Nuovo messaggio da ${name}`,
-    text: message
-  };
+  from: email,
+  to: process.env.EMAIL_USER,
+  subject: `Nuovo messaggio da ${name}`,
+  html: `
+    <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+      <h2 style="color: #2c3e50;">📩 Nuovo messaggio dal sito</h2>
+      <p><strong>Nome:</strong> ${name}</p>
+      <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+      <p><strong>Telefono:</strong> ${phone}</p>
+      <p><strong>Messaggio:</strong></p>
+      <div style="background-color: #f9f9f9; padding: 10px; border-left: 4px solid #2c3e50;">
+        ${message.replace(/\n/g, '<br>')}
+      </div>
+    </div>
+  `
+};
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
