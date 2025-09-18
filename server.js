@@ -41,9 +41,9 @@ app.post('/contact', (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error(error);
-      return res.status(500).send('Error al enviar el mensaje');
+      return res.status(500).send('Invio non riuscito');
     }
-    res.status(200).send('Mensaje enviado correctamente');
+    res.status(200).send('Messaggio inviato');
   });
 });
 
