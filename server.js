@@ -8,7 +8,7 @@ const app = express();
 
 // CORS para permitir solicitudes desde Netlify
 app.use(cors({
-  origin: 'https://frontendgs.netlify.app' 
+  origin: 'https://greenservicetest-frontend.vercel.app/' 
 }));
 
 // Middleware para interpretar JSON
