@@ -24,7 +24,7 @@ app.post('/contact', async (req, res) => {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Green Service <noreply@greenservice.it>',
+      from: 'Green Service <onboarding@resend.dev>',
       to: ['greenservicesoc@gmail.com'],
       subject: `Nuovo messaggio da ${name}`,
       html: `
