@@ -1,61 +1,56 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
 const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
+const { Resend } = require('resend');
 
 const app = express();
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // CORS para permitir solicitudes desde Vercel
 app.use(cors({
-  origin: 'https://greenservicetest-frontend.vercel.app' 
+  origin: 'https://greenservicetest-frontend.vercel.app'
 }));
 
 // Middleware para interpretar JSON
 app.use(express.json());
-
-// Middleware para formularios tradicionales
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/contact', (req, res) => {
+app.post('/contact', async (req, res) => {
   console.log(req.body); // para debuggear
 
   const { name, email, phone, message } = req.body;
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    }
-  });
+  try {
+    const { data, error } = await resend.emails.send({
+      from: 'Green Service <noreply@greenservice.it>',
+      to: ['greenservicesoc@gmail.com'],
+      subject: `Nuovo messaggio da ${name}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+          <h2 style="color: #2c3e50;">📩 Nuovo messaggio dal sito Green Service</h2>
+          <p><strong>Nome:</strong> ${name}</p>
+          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <p><strong>Telefono:</strong> ${phone}</p>
+          <p><strong>Messaggio:</strong></p>
+          <div style="background-color: #f9f9f9; padding: 10px; border-left: 4px solid #2c3e50;">
+            ${message.replace(/\n/g, '<br>')}
+          </div>
+        </div>
+      `
+    });
 
-  const mailOptions = {
-  from: email,
-  to: process.env.EMAIL_USER,
-  subject: `Nuovo messaggio da ${name}`,
-  html: `
-    <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
-      <h2 style="color: #2c3e50;">📩 Nuovo messaggio dal sito Green Service</h2>
-      <p><strong>Nome:</strong> ${name}</p>
-      <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-      <p><strong>Telefono:</strong> ${phone}</p>
-      <p><strong>Messaggio:</strong></p>
-      <div style="background-color: #f9f9f9; padding: 10px; border-left: 4px solid #2c3e50;">
-        ${message.replace(/\n/g, '<br>')}
-      </div>
-    </div>
-  `
-};
-
-  transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error(error);
-      return res.status(500).send('Invio non riuscito');
+      console.error('Resend error:', error);
+      return res.status(500).json({ message: 'Errore nell\'invio del messaggio.' });
     }
-    res.status(200).json({ message: 'Messaggio inviato' });
-  });
+
+    res.status(200).json({ message: 'Messaggio inviato ✅' });
+  } catch (err) {
+    console.error('Catch error:', err);
+    res.status(500).json({ message: 'Errore interno del server.' });
+  }
 });
 
 const PORT = process.env.PORT || 3000;
