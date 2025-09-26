@@ -7,9 +7,11 @@ const { Resend } = require('resend');
 const app = express();
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// CORS para permitir solicitudes desde Vercel
+// CORS más flexible para evitar bloqueos
 app.use(cors({
-  origin: 'https://greenservicetest-frontend.vercel.app'
+  origin: '*',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
 }));
 
 // Middleware para interpretar JSON
@@ -17,8 +19,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Ruta raíz para confirmar que el backend está vivo
+app.get('/', (req, res) => {
+  res.send('✅ Backend Green Service attivo!');
+});
+
+// Ruta de contacto
 app.post('/contact', async (req, res) => {
-  console.log(req.body); // para debuggear
+  console.log('📨 POST /contact ricevuto');
+  console.log(req.body);
 
   const { name, email, phone, message } = req.body;
 
@@ -42,18 +51,18 @@ app.post('/contact', async (req, res) => {
     });
 
     if (error) {
-      console.error('Resend error:', error);
+      console.error('❌ Resend error:', error);
       return res.status(500).json({ message: 'Errore nell\'invio del messaggio.' });
     }
 
     res.status(200).json({ message: 'Messaggio inviato ✅' });
   } catch (err) {
-    console.error('Catch error:', err);
+    console.error('❌ Catch error:', err);
     res.status(500).json({ message: 'Errore interno del server.' });
   }
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT}`);
+  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
 });
