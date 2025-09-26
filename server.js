@@ -54,7 +54,7 @@ app.post('/contact', (req, res) => {
       console.error(error);
       return res.status(500).send('Invio non riuscito');
     }
-    res.status(200).send('Messaggio inviato');
+    res.status(200).json({ message: 'Messaggio inviato' });
   });
 });
 
