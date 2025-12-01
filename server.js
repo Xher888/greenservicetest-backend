@@ -7,6 +7,71 @@ const { Resend } = require('resend');
 const app = express();
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// CORS para TEST (flexible)
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+  res.send('✅ Backend Green Service attivo!');
+});
+
+app.post('/contact', async (req, res) => {
+  console.log('📨 POST /contact ricevuto');
+  console.log(req.body);
+  
+  const { name, email, phone, message } = req.body;
+
+  try {
+    const { data, error } = await resend.emails.send({
+      from: 'Green Service ',
+      to: ['greenservicesoc@gmail.com'],
+      subject: `Nuovo messaggio da ${name}`,
+      html: `
+        📩 Nuovo messaggio dal sito Green Service
+        
+        Nome: ${name}
+        Email: ${email}
+        Telefono: ${phone}
+        Messaggio:
+        ${message.replace(/\n/g, '<br>')}
+      `
+    });
+
+    if (error) {
+      console.error('❌ Resend error:', error);
+      return res.status(500).json({ message: 'Errore nell\'invio del messaggio.' });
+    }
+
+    res.status(200).json({ message: 'Messaggio inviato ✅' });
+
+  } catch (err) {
+    console.error('❌ Catch error:', err);
+    res.status(500).json({ message: 'Errore interno del server.' });
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
+});
+
+/*
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
+require('dotenv').config();
+const { Resend } = require('resend');
+
+const app = express();
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 // CORS más flexible para evitar bloqueos
 app.use(cors({
   origin: '*',
@@ -66,3 +131,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
 });
+*/

@@ -1,0 +1,88 @@
+greenserviceoulx@outlook.com
+V1v4100ulX!=
+08/09/1982
+
+2FA conn chercho888@yahoo.com.ar
+Tu nuevo código es MJ94K-8CZBP-S3EZD-BCCGK-EAK27
+
+Contraseña de la aplicación
+xcabffusgpiylyxe
+
+-------------------------
+greenservicesoc@gmail.com
+V1v4100ulX!=
+
+correo(nombre de la app) 
+Contraseña de la aplicación:
+uqjg dfga neao rrgd
+
+para hostinger mismas credenciales
+root V1v4Gr33n&Br1c0
+----------------------------------------
+IG
+greenservicesoc@gmail.com
+V1v4100ulX!=
+08/09/1982
+
+FB
+greenservicesoc@gmail.com
+V1v4100ulX!=
+23/10/1982
+
+
+- alternativas para la seccion de opiniones
+	 Progetti realizzati --	Prima/dopo con descrizione
+	  Team & valori	-- con foto e missione
+
+CALENDARIO NOLEGGIO
+
++39 0122 8332313 (Brico - Agraria)
+
+
+
+oggi
+formulario de envio de correo (lleva mucho tiempo)
+
+vercel para front, render para back
+
+
+la proxima 
+    ✅ Mostrar un mensaje de “Gracias por tu mensaje” después de enviar y que vuelva a la home
+    ✅ Guardar los mensajes en una base de datos (si querés escalar el proyecto)
+    ✅ Preparar una versión responsive para móviles
+
+
+
+----------------------
+
+
+Visual: 
+- hacer que al tocar el logo me lleve al top (mobile y desktop) 
+- evaluar si dejamos esa imagen de fondo 
+- evaluar opcion de cambiar la fuente del titulo de navbar por alguna parecida a la del logo 
+- definir el texto de presentacion en hero 
+- hacer un flotante como el de whatsapp para la version desktop que me lleve al top 
+- definir texto de chi siamo 
+- definir texto de i nostri servizi SPECIALIZZATI 
+- para segunda etapa, hacer links los textos de i nostri servizi SPECIALIZZATI y referenciarlos hacia las nuevas paginas 
+- en la galeria definir que fotos usar (fotos de las maquinas, productos de vivero y agraria, servicio de limpieza, trabajos de albañileria y otros) 
+- sacar la section de testimonios, reemplazarla quizas por muestra de trabajos con antes y despues 
+- confirmar si esta correcto el contenido de contatti y dove trovarci 
+- definir texto de arrivare a agraria y hacer las indicaciones en italiano para pegar al video 
+
+codigo: 
+en HTML: 
+- reviar por secciones el codigo con distintas AI 
+- editar el dominio el HEAD ==> en rel="canonical", property="og:image" content=, property="og:url" content=, name="twitter:image" content=, 
+en CSS: 
+- ver la sugerencia que dio GPT 
+- evaluarlo con AI 
+- asegurarme que el minificado y el normal sean iguales, ver formas de mantenerlos siempre iguales, pero la idea hacer modificaciones en el normal porque es mas facil y que esto replique en el minificado 
+- imagen del servici specializzati ver si la pongo local o dejo la de splash 
+en JS: 
+- evaluarlo con AI 
+- cuando tenga el dominio editar el fetch('https://greenservicetest-backend.onrender.com/contact', {method: 'POST',.....
+en SERVER.js 
+- evaluarlo con AI si esta listo para hostinger 
+- ediar url en app.use(cors({ origin:..... OTROS: 
+- post deploy, revisar .gitignore, .env, package.json, package-lock.json y archivos que afecten al backend

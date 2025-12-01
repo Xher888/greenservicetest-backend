@@ -1,0 +1,21 @@
+funcionalidad
+flujo de correos funciona bien, tanto desde mobile como desktop, envia los correos al gmail, luego por regla los reenvia a Outlook (ver si van a usar esa cuenta o 
+usan greenservice@live.it, si usan esa hay que modificar los scripts gmail/oulook
+
+contenido
+- definir los 6 servicios que se ofrecen, poner los textos correspondientes a cada servicio
+- en la galeria fotografica (nuestros productos) poner las fotos que corresponden
+- en dove siamo verificar que el texto de las indicaciones de como arrivar a agraria esten correctos
+
+hosting y dominio
+
+google ads
+**Asunto:** Estrategia inicial para la web y Google Ads  
+
+Estimado,  
+Quería comentarte sobre el uso de Google Ads en este momento.  
+Los anuncios tienen ventajas claras: generan tráfico inmediato y permiten segmentar audiencias específicas. Sin embargo, también implican un coste constante y requieren optimización continua.  
+Actualmente la página aún no está online, por lo que mi sugerencia es avanzar primero con los pasos básicos: comprar el dominio, contratar el hosting y subir la web. Una vez publicada, lo ideal es darle unas semanas de movimiento orgánico sin anuncios, para observar cómo evoluciona en visitas y contactos a través del formulario.  
+Si vemos que el tráfico inicial es bajo o que no llegan suficientes consultas, ahí sí sería oportuno considerar una inversión en Google Ads para potenciar la visibilidad y captar clientes más rápido.  
+Quedo atento a tus comentarios para coordinar los próximos pasos.  
+
