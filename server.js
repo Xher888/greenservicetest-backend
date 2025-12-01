@@ -34,7 +34,7 @@ app.post('/contact', async (req, res) => {
   try {
     const { data, error } = await resend.emails.send({
       // FIXED: Use simple format for Resend TEST (avoids domain verification issues)
-      from: 'Green Service ',
+      from: 'Green Service <onboarding@resend.dev>',
       to: ['greenservicesoc@gmail.com'],
       subject: `Nuovo messaggio da ${name}`,
       html: `
