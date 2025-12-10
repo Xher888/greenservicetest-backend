@@ -86,3 +86,7 @@ en SERVER.js
 - evaluarlo con AI si esta listo para hostinger 
 - ediar url en app.use(cors({ origin:..... OTROS: 
 - post deploy, revisar .gitignore, .env, package.json, package-lock.json y archivos que afecten al backend
+
+
+ssh root@72.62.89.57
+ssh

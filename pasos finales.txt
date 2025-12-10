@@ -1,13 +1,15 @@
 funcionalidad
 flujo de correos funciona bien, tanto desde mobile como desktop, envia los correos al gmail, luego por regla los reenvia a Outlook (ver si van a usar esa cuenta o 
 usan greenservice@live.it, si usan esa hay que modificar los scripts gmail/oulook
+los enlaces funcionan bien (WhatsApp, Facebook, Instagram, home, navbar, botones, links)
+
 
 contenido
-- definir los 6 servicios que se ofrecen, poner los textos correspondientes a cada servicio
 - en la galeria fotografica (nuestros productos) poner las fotos que corresponden
 - en dove siamo verificar que el texto de las indicaciones de como arrivar a agraria esten correctos
 
 hosting y dominio
+contratar hostinger plan KVM1
 
 google ads
 **Asunto:** Estrategia inicial para la web y Google Ads  
