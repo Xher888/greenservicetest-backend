@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 // Contact form endpoint
-app.post('/contact', async (req, res) => {
+app.post('/api/contact', async (req, res) => {
   console.log('📨 POST /contact ricevuto');
   console.log(req.body);
 
