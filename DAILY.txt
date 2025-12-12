@@ -90,3 +90,13 @@ en SERVER.js
 
 ssh root@72.62.89.57
 ssh
+
+Detalles del flujo
+Nombre del flujo
+Web Green Service
+URL del flujo
+https://greenserviceoulx.it
+ID del flujo
+13129749936
+ID de medición
+G-S6M0VRER20
